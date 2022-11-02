@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#333333",
+    backgroundColor: "#272727",
   },
   logoContainer: {
     width: "100%",
@@ -11,6 +11,25 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 173,
+  },
+  createdContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 16,
+    marginTop: 35,
+  },
+  createdText: {
+    color: "#2FC7E5",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginRight: 5,
+  },
+  completedText: {
+    color: "#6C6DB0",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginRight: 5,
   },
   eventName: {
     color: "#fdfcfe",
@@ -22,6 +41,14 @@ export const styles = StyleSheet.create({
     color: "#6b6b6b",
     fontSize: 16,
   },
+  quantity: {
+    backgroundColor: "gray",
+    width: 20,
+    height: 20,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   input: {
     flex: 1,
     height: 56,
@@ -29,7 +56,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#1f1e25",
     color: "#fff",
     padding: 16,
-    fontSize: 16,
+    fontSize: 17,
     marginRight: 7,
   },
   buttonText: {
@@ -50,6 +77,8 @@ export const styles = StyleSheet.create({
     marginTop: 36,
     marginBottom: 42,
     padding: 15,
+    position: "absolute",
+    top: 90,
   },
   listEmptyText: {
     color: "#fff",
