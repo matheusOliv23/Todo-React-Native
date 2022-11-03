@@ -1,10 +1,44 @@
-import React from "react";
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  TextInput,
+  Alert,
+} from "react-native";
 import { logo } from "../../../assets";
 import { TaskItem } from "../../components/TaskItem";
 import { styles } from "./styles";
 
 export function Home() {
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [taskName, setTaskName] = useState("");
+
+  function handleTaskAdd() {
+    if (tasks.includes(taskName)) {
+      return Alert.alert(
+        "Tarefa já existe",
+        "Ja existe uma tarefa na lista com esse nome"
+      );
+    }
+    setTasks((prevState) => [...prevState, taskName]);
+    setTaskName("");
+  }
+  function handleTaskRemove(name: string) {
+    Alert.alert("Remover", `Remover essa tarefa?`, [
+      {
+        text: "Sim",
+        onPress: () =>
+          setTasks((prevState) => prevState.filter((task) => task !== name)),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+    console.log(`Clicou em remover ${name}`);
+  }
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
