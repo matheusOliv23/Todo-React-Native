@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#272727",
+    backgroundColor: "#1A1A1A",
   },
   logoContainer: {
     width: "100%",
@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     height: 56,
     borderRadius: 5,
-    backgroundColor: "#1f1e25",
+    backgroundColor: "#333333",
     color: "#fff",
     padding: 16,
     fontSize: 17,

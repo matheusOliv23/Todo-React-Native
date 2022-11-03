@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import { logo } from "../../../assets";
+import { TaskItem } from "../../components/TaskItem";
 import { styles } from "./styles";
 
 export function Home() {
@@ -9,6 +10,7 @@ export function Home() {
       <View style={styles.logoContainer}>
         <Image source={logo} />
       </View>
+
       <View style={styles.form}>
         <TextInput
           style={styles.input}
@@ -32,6 +34,9 @@ export function Home() {
             <Text style={{ color: "#fff", fontWeight: "bold" }}>1</Text>
           </View>
         </View>
+      </View>
+      <View style={{ padding: 16 }}>
+        <TaskItem />
       </View>
     </View>
   );
