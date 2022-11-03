@@ -3,7 +3,12 @@ import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 
-export function TaskItem() {
+type Props = {
+  onRemove: () => void;
+  task: string;
+};
+
+export function TaskItem({ onRemove, task }: Props) {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <View
@@ -28,9 +33,14 @@ export function TaskItem() {
           { textDecorationLine: isChecked ? "line-through" : "none" },
         ]}
       >
-        Texto aqui
+        {task}
       </Text>
-      <MaterialIcons name="delete" size={24} color="#e23c44" />
+      <MaterialIcons
+        onPress={onRemove}
+        name="delete"
+        size={24}
+        color="#e23c44"
+      />
     </View>
   );
 }

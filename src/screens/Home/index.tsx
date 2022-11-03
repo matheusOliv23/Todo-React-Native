@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
+  FlatList,
 } from "react-native";
 import { logo } from "../../../assets";
 import { TaskItem } from "../../components/TaskItem";
@@ -39,6 +40,10 @@ export function Home() {
     ]);
     console.log(`Clicou em remover ${name}`);
   }
+
+  const renderItem = ({ item }: { item: string }) => {
+    return <TaskItem onRemove={() => handleTaskRemove(item)} task={item} />;
+  };
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -50,8 +55,10 @@ export function Home() {
           style={styles.input}
           placeholder="Adicione uma nova tarefa"
           placeholderTextColor="#6b6b6b"
+          onChangeText={(task) => setTaskName(task)}
+          value={taskName}
         />
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={handleTaskAdd} style={styles.button}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
@@ -70,7 +77,15 @@ export function Home() {
         </View>
       </View>
       <View style={{ padding: 16 }}>
-        <TaskItem />
+        <FlatList
+          data={tasks}
+          keyExtractor={(item) => item}
+          renderItem={renderItem}
+          ListEmptyComponent={() => (
+            <Text style={styles.listEmptyText}>Adicione uma tarefa.</Text>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </View>
   );
