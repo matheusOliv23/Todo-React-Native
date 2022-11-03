@@ -81,8 +81,12 @@ export const styles = StyleSheet.create({
     top: 90,
   },
   listEmptyText: {
-    color: "#fff",
-    fontSize: 14,
+    fontSize: 16,
     textAlign: "center",
+    color: "#6b6b6b",
+  },
+  listEmptyContainer: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

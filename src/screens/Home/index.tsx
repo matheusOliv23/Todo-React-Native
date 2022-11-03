@@ -8,7 +8,7 @@ import {
   Alert,
   FlatList,
 } from "react-native";
-import { logo } from "../../../assets";
+import { clipboard, logo } from "../../../assets";
 import { TaskItem } from "../../components/TaskItem";
 import { styles } from "./styles";
 
@@ -43,6 +43,20 @@ export function Home() {
 
   const renderItem = ({ item }: { item: string }) => {
     return <TaskItem onRemove={() => handleTaskRemove(item)} task={item} />;
+  };
+
+  const listEmptyComponent = () => {
+    return (
+      <View style={styles.listEmptyContainer}>
+        <Image source={clipboard} />
+        <Text style={styles.listEmptyText}>
+          Você ainda não tem tarefas cadastradas
+        </Text>
+        <Text style={styles.listEmptyText}>
+          Crie tarefas e organize seus itens aqui
+        </Text>
+      </View>
+    );
   };
   return (
     <View style={styles.container}>
@@ -81,9 +95,7 @@ export function Home() {
           data={tasks}
           keyExtractor={(item) => item}
           renderItem={renderItem}
-          ListEmptyComponent={() => (
-            <Text style={styles.listEmptyText}>Adicione uma tarefa.</Text>
-          )}
+          ListEmptyComponent={listEmptyComponent}
           showsVerticalScrollIndicator={false}
         />
       </View>
