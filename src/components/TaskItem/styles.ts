@@ -4,6 +4,7 @@ export const styles = {
     borderRadius: 8,
     minHeight: 64,
     padding: 9,
+    marginBottom: 6,
   },
   text: {
     color: "#fff",

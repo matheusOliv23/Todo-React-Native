@@ -15,6 +15,7 @@ import { styles } from "./styles";
 export function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
   const [taskName, setTaskName] = useState("");
+  const [completedTasksNumber, setCompletedTasksNumber] = useState(0);
 
   function handleTaskAdd() {
     if (tasks.includes(taskName)) {
@@ -30,8 +31,9 @@ export function Home() {
     Alert.alert("Remover", `Remover essa tarefa?`, [
       {
         text: "Sim",
-        onPress: () =>
-          setTasks((prevState) => prevState.filter((task) => task !== name)),
+        onPress: () => {
+          setTasks((prevState) => prevState.filter((task) => task !== name));
+        },
       },
       {
         text: "Não",
@@ -42,7 +44,14 @@ export function Home() {
   }
 
   const renderItem = ({ item }: { item: string }) => {
-    return <TaskItem onRemove={() => handleTaskRemove(item)} task={item} />;
+    return (
+      <TaskItem
+        completedTaskNumber={completedTasksNumber}
+        setCompletedTaskNumber={setCompletedTasksNumber}
+        onRemove={() => handleTaskRemove(item)}
+        task={item}
+      />
+    );
   };
 
   const listEmptyComponent = () => {
@@ -80,13 +89,17 @@ export function Home() {
         <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
           <Text style={styles.createdText}>Criadas</Text>
           <View style={styles.quantity}>
-            <Text style={{ color: "#fff", fontWeight: "bold" }}>1</Text>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>
+              {tasks.length}
+            </Text>
           </View>
         </View>
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <Text style={styles.completedText}>Concluidas</Text>
           <View style={styles.quantity}>
-            <Text style={{ color: "#fff", fontWeight: "bold" }}>1</Text>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>
+              {completedTasksNumber}
+            </Text>
           </View>
         </View>
       </View>

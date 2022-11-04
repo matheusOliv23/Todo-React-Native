@@ -6,10 +6,21 @@ import { useState } from "react";
 type Props = {
   onRemove: () => void;
   task: string;
+  completedTaskNumber: number;
+  setCompletedTaskNumber: any;
 };
 
-export function TaskItem({ onRemove, task }: Props) {
+export function TaskItem({
+  onRemove,
+  task,
+  completedTaskNumber,
+  setCompletedTaskNumber,
+}: Props) {
   const [isChecked, setIsChecked] = useState(false);
+
+  function handleCompletedTasks() {
+    setIsChecked(!isChecked);
+  }
   return (
     <View
       style={[
@@ -25,7 +36,7 @@ export function TaskItem({ onRemove, task }: Props) {
         name={isChecked ? "check-circle" : "radio-button-unchecked"}
         size={24}
         color="#2FC7E5"
-        onPress={() => setIsChecked(!isChecked)}
+        onPress={handleCompletedTasks}
       />
       <Text
         style={[
